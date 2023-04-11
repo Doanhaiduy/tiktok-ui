@@ -287,3 +287,21 @@ using: className={cx('post-item')}
 npm i
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+## tippy model
+https://github.com/atomiks/tippyjs-react
+https://atomiks.github.io/tippyjs/v5/all-props/
+
+npm i @tippyjs/react
+
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
+
+example: <Tippy content="Tìm kiếm" placement="right">
+<button className={cx('search-btn')}>
+<FontAwesomeIcon icon={faMagnifyingGlass} />
+</button>
+</Tippy>
+
+
+import Tippy from '@tippyjs/react/headless';
