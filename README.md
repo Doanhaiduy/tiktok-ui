@@ -266,3 +266,10 @@ import { publicRoutes } from '~/routes';
 
 `Xây dựng cơ chế tải Layout`
 
+## Install Classnames
+
+npm i classnames
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles)
+using: className={cx('post-item')}
