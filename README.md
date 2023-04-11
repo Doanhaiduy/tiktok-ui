@@ -68,3 +68,201 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Setup TIKTOK
+
+## Cấu Hình Webpack
+
+### 1
+
+`install customize-cra:`
+npm i customize-cra react-app-rewired -D
+
+### 2
+
+`Create a config-overrides.js file in the root directory`
+/_ config-overrides.js _/
+
+module.exports = function override(config, env) {
+//do stuff with the webpack config...
+return config;
+}
+
+### 3
+
+`'Flip' the existing calls to react-scripts in npm scripts for start, build and test`
+
+/_ package.json _/
+
+"scripts": {
+
+-   "start": "react-scripts start",
+
+*   "start": "react-app-rewired start",
+
+-   "build": "react-scripts build",
+
+*   "build": "react-app-rewired build",
+
+-   "test": "react-scripts test",
+
+*   "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+    }
+
+## Cài đặt babel-plugin-module-resolver
+
+`Use this:`
+import MyUtilFn from 'utils/MyUtilFn';
+
+`Instead of that:`
+import MyUtilFn from '../../../../utils/MyUtilFn';
+
+### 1
+
+npm install --save-dev babel-plugin-module-resolver
+
+### 2
+
+`Specify the plugin in your .babelrc with the custom root or alias. Here's an example:`
+
+{
+"plugins": [
+["module-resolver", {
+"alias": {
+"~": "./src",
+}
+}]
+]
+}
+
+use this: import MyUtilFn from '~/utils/MyUtilFn'; `(dấu ~ đại diện cho ./src)`
+
+### 3
+
+`Configure the path mapping in jsconfig.json`
+{
+"compilerOptions": {
+"baseUrl": ".",
+"paths": {
+"~/_": ["src/_"],
+}
+}
+}
+
+### 4
+
+const { override,useBabelRc } = require("customize-cra");
+
+// eslint-disable-next-line react-hooks/rules-of-hooks
+module.exports = override(useBabelRc());
+
+## Cài đặt và cấu hình Prettier
+
+### 1
+
+`Create file .prettierrc`:
+{
+"arrowParens": "always",
+"bracketSameLine": false,
+"bracketSpacing": true,
+"embeddedLanguageFormatting": "auto",
+"htmlWhitespaceSensitivity": "css",
+"insertPragma": false,
+"jsxSingleQuote": false,
+"printWidth": 120,
+"proseWrap": "preserve",
+"quoteProps": "as-needed",
+"requirePragma": false,
+"semi": true,
+"singleQuote": true,
+"tabWidth": 4,
+"trailingComma": "all",
+"useTabs": false,
+"vueIndentScriptAndStyle": false
+}
+
+### 2
+
+`Create file .vscode/settings.json`
+{
+"editor.formatOnSave": true,
+"editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+
+## Cấu hình sử dụng CSS/SASS
+
+### 1
+
+`Tạo GlobalStyles component`
+create components/GlobalStyles/index.js
+
+### 2
+
+`Cài thư viện SASS: `
+npm i -D sass
+
+### 3
+
+`Reset CSS`
+npm install --save normalize.css
+
+in GlobalStyles.scss:
+
+@import 'normalize.css'
+
+### 4
+
+`Default CSS: font-family, font-size, line-height`
+
+## Cấu hình Router/Layout
+
+### 1
+
+`Phân tích tổng quan Layout`
+
+### 2
+
+`Cài đặt react-router-dom: `
+
+npm i react-router-dom
+in App.js
+import {BrowserRouter as Router ,Routes, Route,Link } from 'react-router-dom'
+
+### 3
+
+`Đưa cấu hình routes ra ngoài`
+in src: create routes/index.js
+`in index.js: `
+const publicRoutes = [
+{
+path: '/',
+component: Home,
+},
+{
+path: '/following',
+component: Following,
+},
+`Dùng cho những router không cần đăng nhập vẫn xem được`
+]
+
+const privateRoutes = [
+`Dùng cho những router cần đăng nhập mới xem được`
+];
+
+export { publicRoutes, privateRoutes };
+
+`in app.js: `
+import { publicRoutes } from '~/routes';
+
+<Routes>
+    {publicRoutes.map((route, index) => {
+                        const Page = route.component;
+         return <Route key={index} path={route.path} element={<Page />} />;
+        })}
+</Routes>
+
+### 4
+
+`Xây dựng cơ chế tải Layout`
+
