@@ -1,6 +1,7 @@
 .wrapper {
     font-size: 1.6rem;
     font-weight: 700;
+    font-family: 'ProximaNova', sans-serif;
     min-width: 100px;
     padding: 9px 16px;
     cursor: pointer;
@@ -78,4 +79,14 @@
 .large {
     min-width: 140px;
     padding: 14px 16px;
+}
+
+.icon-upload {
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    height: 36px;
+    display: inline-flex;
+    gap: 6px;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
 }
