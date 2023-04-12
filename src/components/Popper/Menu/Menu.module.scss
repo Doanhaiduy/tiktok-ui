@@ -27,6 +27,7 @@
 
 .menu-body {
     overflow-y: overlay;
+    overscroll-behavior: contain;
 }
 
 // Header

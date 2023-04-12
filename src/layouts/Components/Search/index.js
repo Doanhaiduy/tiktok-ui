@@ -3,7 +3,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 
-import * as searchServices from '~/apiServices/searchService';
+import * as searchServices from '~/services/searchService';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SearchIcon } from '~/components/Icons';
