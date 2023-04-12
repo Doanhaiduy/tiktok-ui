@@ -6,11 +6,9 @@ function useDebounce(value, delay) {
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebounceValue(value);
-            console.log('end press key');
         }, delay);
         return () => {
             clearTimeout(handler);
-            console.log('press key.....');
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
