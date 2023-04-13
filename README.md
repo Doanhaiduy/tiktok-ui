@@ -289,6 +289,7 @@ npm i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 ## tippy model
+
 https://github.com/atomiks/tippyjs-react
 https://atomiks.github.io/tippyjs/v5/all-props/
 
@@ -303,5 +304,14 @@ example: <Tippy content="Tìm kiếm" placement="right">
 </button>
 </Tippy>
 
-
 import Tippy from '@tippyjs/react/headless';
+
+## axios
+
+npm i axios
+
+## propTypes
+`Validate props`
+
+npm install --save prop-types => đã được cài sẵn trong create-react-app
+import PropTypes from 'prop-types'; 
