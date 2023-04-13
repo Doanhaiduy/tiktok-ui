@@ -12,12 +12,6 @@
     }
     &.active {
         color: var(--primary);
-        .icon {
-            display: none;
-        }
-        .active-icon {
-            display: flex;
-        }
     }
 }
 
@@ -28,8 +22,4 @@
 .icon,
 .active-icon {
     display: flex;
-}
-
-.active-icon {
-    display: none;
 }

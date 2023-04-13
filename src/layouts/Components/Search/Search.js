@@ -55,8 +55,8 @@ function Search() {
         }
         setSearchValue(e.target.value);
     };
-    let resultRender =
-        searchResult.length > 8 ? setSearchResult((prev) => prev.slice(0, prev.length - 1)) : searchResult;
+    // let resultRender =
+    //     searchResult.length > 8 ? setSearchResult((prev) => prev.slice(0, prev.length - 1)) : searchResult;
     return (
         // Using a wrapper <div>tag around the reference element solves this by creating a new parentNode context.
         <div>
@@ -67,7 +67,7 @@ function Search() {
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Account</h4>
-                            {resultRender.map((result) => (
+                            {searchResult.map((result) => (
                                 <AccountItem key={result.id} data={result} />
                             ))}
                         </PopperWrapper>
